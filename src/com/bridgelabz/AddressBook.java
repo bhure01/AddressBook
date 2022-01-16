@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
 import javax.management.AttributeList;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,7 +14,10 @@ public class AddressBook {
 
     List<Contacts> list = new ArrayList<Contacts>();
 //    LinkedList list1 = new LinkedList();
+    ArrayList<Contacts> list = new ArrayList<Contacts>();
 
+    //creating method to add a new contact into address book
+    public Contacts addNewContact() {
     //creating method to add a new contact into addree book
     public void addNewContact() {
         System.out.println("Please enter the below contact details");
@@ -43,6 +47,21 @@ public class AddressBook {
         contacts.seteMail(eMail);
 
         list.add(contacts);
+    }
+
+    // UC-2 created method to display the added contact details
+    public void showContactDetails(Contacts contacts) {
+        for (Contacts contact : list) {
+            System.out.println("Display Contact Details :- ");
+            System.out.println("First Name :- " + contacts.getFirstName());
+            System.out.println("Last Name :- " + contacts.getLastName());
+            System.out.println("Address :- " + contacts.getAddress());
+            System.out.println("City :- " + contacts.getCity());
+            System.out.println("Zip Code :- " + contacts.getZipCode());
+            System.out.println("State :- " + contacts.getState());
+            System.out.println("Phone Number :- " + contacts.getPhoneNo());
+            System.out.println("Email ID :- " + contacts.geteMail());
+        }
     }
 
     // UC2-created method to display the added contact details
@@ -84,6 +103,25 @@ public class AddressBook {
             contacts.setPhoneNo(sc.next());
             System.out.println("Enter mail ID : ");
             contacts.seteMail(sc.next());
+        }
+    }
+
+    // uc4- created method to delete an existing contact
+    public void deteleContact() {
+        System.out.println("Enter first neme : ");  // use first name of contact to delete
+        String firstName = sc.nextLine();
+        // check for user input with first name whether available or not
+        if(firstName.equalsIgnoreCase(contacts.getFirstName())) {
+            System.out.println("Entered First name is not avaialble in address book");
+        } else {
+            contacts.setFirstName(null);
+            contacts.setLastName(null);
+            contacts.setAddress(null);
+            contacts.setCity(null);
+            contacts.setZipCode(null);
+            contacts.setState(null);
+            contacts.setPhoneNo(null);
+            contacts.seteMail(null);
         }
     }
 }

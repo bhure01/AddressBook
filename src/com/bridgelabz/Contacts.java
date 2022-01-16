@@ -1,6 +1,8 @@
 package com.bridgelabz;
 
 public class Contacts {
+
+    // global variables for contacts class
     private String firstName;
     private String lastName;
     private String address;
@@ -11,7 +13,6 @@ public class Contacts {
     private String eMail;
 
     // add getter setter methods for above variables
-
     public String getFirstName() {
         return firstName;
     }
@@ -20,15 +21,18 @@ public class Contacts {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLastName()
+    {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName)
+    {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
+    public String getAddress()
+    {
         return address;
     }
 
@@ -37,6 +41,7 @@ public class Contacts {
     }
 
     public String getCity() {
+
         return city;
     }
 
@@ -57,22 +62,27 @@ public class Contacts {
     }
 
     public void setState(String state) {
+
         this.state = state;
     }
 
     public String getPhoneNo() {
+
         return phoneNo;
     }
 
     public void setPhoneNo(String phoneNo) {
+
         this.phoneNo = phoneNo;
     }
 
     public String geteMail() {
+
         return eMail;
     }
 
     public void seteMail(String eMail) {
+
         this.eMail = eMail;
     }
 }

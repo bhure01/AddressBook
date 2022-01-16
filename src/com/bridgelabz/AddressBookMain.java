@@ -1,17 +1,25 @@
 package com.bridgelabz;
 import  java.util.Scanner;
+import java.util.HashMap;
 
 public class AddressBookMain {
+
     public static void main(String[] args) {
+
         System.out.println("Welcome to Address Book System problem");
         AddressBook addressBook = new AddressBook();  //object of addressbook class for managing contacts
         Contacts contacts = addressBook.addNewContact();
         addressBook.showContactDetails(contacts);
+
         System.out.println("Enter Yes or No");
 
         int choice;     //variable for users choice
 
-//         // show menu for user input to select choices
+ // show menu for user input to select choices
+
+        AddressBook addressBook = new AddressBook(); //object of addressbook class for managing contacts
+         // show menu for user input to select choices
+
         do {
             System.out.println("****AddressBook Management****");
             System.out.println("1.Add New Contact \n 2.Edit Contact Details \n 3.Delete Contact Details" + "\n 4.Display Contact Details \n 5.Exit");
@@ -29,7 +37,7 @@ public class AddressBookMain {
                     addressBook.deteleContact();    // delete contact details from address book
                     break;
                 case 4:
-                    addressBook.showContactDetails(contacts);
+                    addressBook.showContactDetails(); // displaying contact details
                     break;
                 case 5:
                     System.out.println("Thanks for using AddressBook");

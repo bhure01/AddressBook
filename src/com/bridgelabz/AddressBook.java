@@ -11,14 +11,15 @@ public class AddressBook {
 
     Scanner sc = new Scanner(System.in);    // screated scanner class object for user input
     Contacts contacts = new Contacts();   // created object for Contacts class for getter setter methods
+    Contacts contacts = new Contacts();     // created object for Contacts class for getter setter methods
 
-    List<Contacts> list = new ArrayList<Contacts>();
-//    LinkedList list1 = new LinkedList();
-    ArrayList<Contacts> list = new ArrayList<Contacts>();
+    ArrayList<Contacts> contactList = new ArrayList<Contacts>();
 
-    //creating method to add a new contact into address book
-    public Contacts addNewContact() {
+    int choice;
+
+
     //creating method to add a new contact into addree book
+
     public void addNewContact() {
         System.out.println("Please enter the below contact details");
         System.out.println("Enter the first name : ");
@@ -45,13 +46,16 @@ public class AddressBook {
         System.out.println("Enter the email ID : ");
         String eMail = sc.next();
         contacts.seteMail(eMail);
+      
+        contactList.add(contacts);
 
-        list.add(contacts);
-    }
+}
 
     // UC-2 created method to display the added contact details
     public void showContactDetails(Contacts contacts) {
-        for (Contacts contact : list) {
+
+        for (Contacts contact : contactList) {
+
             System.out.println("Display Contact Details :- ");
             System.out.println("First Name :- " + contacts.getFirstName());
             System.out.println("Last Name :- " + contacts.getLastName());
@@ -64,9 +68,10 @@ public class AddressBook {
         }
     }
 
+
     // UC2-created method to display the added contact details
     public void showContactDetails() {
-       for (Contacts contact:list) {
+       for (Contacts contact:contactlist) {
            System.out.println("Display Contact Details :- ");
            System.out.println("First Name :- " + contact.getFirstName());
            System.out.println("Last Name :- " + contact.getLastName());
@@ -79,6 +84,7 @@ public class AddressBook {
        }
     }
 
+
     // UC3-Creating method to edit an existing contact
     public void editContactDetail() {
         // use first name to edit the contact
@@ -86,9 +92,12 @@ public class AddressBook {
         String firstName = sc.nextLine();
 
         // checking for valid user input
-        if(!firstName.equalsIgnoreCase(contacts.getFirstName())) {
-            System.out.println("Entered First Name details is not available in AddressBook");
-        } else {
+
+        boolean isAvailable = false;
+        for(Contacts contact : contactList) {
+            if (firstName.equalsIgnoreCase(contact.getFirstName())) {
+                isAvailable = true;
+
             System.out.println("Enter last name :- ");
             contacts.setLastName(sc.nextLine());
             System.out.println("Enter Address ;-");
@@ -103,6 +112,11 @@ public class AddressBook {
             contacts.setPhoneNo(sc.next());
             System.out.println("Enter mail ID : ");
             contacts.seteMail(sc.next());
+            break;
+        }
+    }
+        if(!isAvailable) {
+            System.out.println("Contact Number Not Found.");
         }
     }
 
@@ -111,17 +125,50 @@ public class AddressBook {
         System.out.println("Enter first neme : ");  // use first name of contact to delete
         String firstName = sc.nextLine();
         // check for user input with first name whether available or not
-        if(firstName.equalsIgnoreCase(contacts.getFirstName())) {
-            System.out.println("Entered First name is not avaialble in address book");
-        } else {
-            contacts.setFirstName(null);
-            contacts.setLastName(null);
-            contacts.setAddress(null);
-            contacts.setCity(null);
-            contacts.setZipCode(null);
-            contacts.setState(null);
-            contacts.setPhoneNo(null);
-            contacts.seteMail(null);
+        boolean isAvailable = false;
+        for(Contacts contact : contactList) {
+            if (firstName.equalsIgnoreCase(contact.getFirstName())) {
+                isAvailable = true;
+                contactList.remove(contact);
+                System.out.println("Contact Deleted.");
+                break;
+            }
         }
+        if(!isAvailable) {
+            System.out.println("Contact Number Not Found.");
+        }
+    }
+
+    public void contactOptions(AddressBook addressBook) {
+        //Show Menu for user to Select Operation on AddressBook
+        do {
+            System.out.println("***** ADDRESS BOOK MANAGEMENT *****");
+            System.out.println("1. ADD NEW CONTACT\n 2. EDIT CONTACT\n 3. DELETE CONTACT" +
+                    "\n 4. DISPLAY CONTACT\n 5. EXIT");
+            System.out.println("Please Select the Operation Number : ");
+            choice = addressBook.sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addressBook.addNewContact();    //Adding New Contact Details
+                    break;
+                case 2:
+                    addressBook.editContactDetail();  //Edit Contact Details
+                    break;
+                case 3:
+                    addressBook.deteleContact();    //Delete the Contact Details
+                    break;
+                case 4:
+                    addressBook.showContactDetails(contacts);   //Show Contact Details
+                    break;
+                case 5:
+                    System.out.println("Thank You for Using Address Book.");
+                    break;
+                default:
+                    System.out.println("Please Select the Operation between 1 to 5 only.");
+                    break;
+            }
+        }
+        while( choice != 5 );
     }
 }

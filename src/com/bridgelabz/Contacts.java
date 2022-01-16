@@ -2,8 +2,6 @@ package com.bridgelabz;
 
 public class Contacts {
 
-    // global variables for contacts class
-
     private String firstName;
     private String lastName;
     private String address;

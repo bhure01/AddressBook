@@ -1,17 +1,18 @@
 package com.bridgelabz;
 
 public class Contacts {
+
+    //Variable Declaration for Contacts Class
     private String firstName;
-    private String lastName;
+    private String lastname;
     private String address;
     private String city;
-    private String zipCode;
     private String state;
+    private String zip;
     private String phoneNo;
-    private String eMail;
+    private String emailID;
 
-    // add getter setter methods for above variables
-
+    //Adding Getter and Setter Methods for the Variables
     public String getFirstName() {
         return firstName;
     }
@@ -20,12 +21,12 @@ public class Contacts {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getAddress() {
@@ -44,20 +45,20 @@ public class Contacts {
         this.city = city;
     }
 
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
     public String getState() {
         return state;
     }
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public String getPhoneNo() {
@@ -68,11 +69,11 @@ public class Contacts {
         this.phoneNo = phoneNo;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmailID() {
+        return emailID;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmailID(String emailID) {
+        this.emailID = emailID;
     }
 }

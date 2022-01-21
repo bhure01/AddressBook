@@ -7,7 +7,7 @@ public class AddressBook {
 
     //Scanner object for User Input
     Scanner sc = new Scanner(System.in);
-    Contacts contacts = new Contacts();     // created object for Contacts class for getter setter methods
+    Contacts contacts = new Contacts();   // created object for Contacts class for getter setter methods
     int choice;
     ArrayList<Contacts> contactList = new ArrayList<>();
 
@@ -51,6 +51,7 @@ public class AddressBook {
             }
         }
     }
+
 
     //Method to Edit the Existing Contact
     public void editContact() {
@@ -103,16 +104,18 @@ public class AddressBook {
         }
         if(!isAvailable) {
             System.out.println("Contact number is not available");
-        }
+         }
     }
 
     public void contactOptions(AddressBook addressBook) {
         //Show Menu for user to Select Operation on AddressBook
         do {
+
             System.out.println("----- ADDRESS BOOK SYSTEM ------");
             System.out.println("1. Add New Contact\n2. Edit Contact Details\n3. Delete Contact" +
                     "\n4. Display Contact\n5. Exit");
             System.out.println("Please select your choices: ");
+
             choice = addressBook.sc.nextInt();
 
             switch (choice) {
@@ -134,6 +137,7 @@ public class AddressBook {
                 default:
                     System.out.println("Please select the choices between only 1 to 5 only");
                     break;
+              
             }
         }
         while( choice != 5 );

@@ -1,22 +1,26 @@
 package com.bridgelabz;
-import  java.util.Scanner;
+
+
+import java.util.Scanner;
+import java.util.Map;
 import java.util.HashMap;
 
 public class AddressBookMain {
 
+
     public static void main(String[] args) {
 
-        System.out.println("Welcome to Address Book System problem");
-        AddressBook addressBook = new AddressBook();  //object of addressbook class for managing contacts
+        System.out.println("Welcome to Address Book System Program");
 
-        int choice;     //variable for users choice
+        int choice = AddressBookFile.userInput();
 
-//         // show menu for user input to select choices
         do {
-            System.out.println("****AddressBook Management****");
-            System.out.println("1.Add New AddressBook\n 2.Edit AddressBook\n 3.Delete AddressBook" + "\n 4.Display AddressBook \n 5.Select AddressBook\n 6. Exit");
-            System.out.println("Please select the choice: ");
-            choice = AddressBookFile.userInput();
+                //Displaying AddressBOok Menu to users for selecting the choices
+            System.out.println("------ ADDRESS BOOK SYSTEM -------");
+            System.out.println("1.Add New Address Book\n2. Edit Address Book\n3. Delete Address Book" +
+                    "\n4. Display Address Book\n5. Select Address Book\n6. Exit");
+            System.out.println("Please Select the Choices : ");
+
 
             switch (choice) {
                 case 1:
@@ -34,10 +38,10 @@ public class AddressBookMain {
                     AddressBookFile.selectAddressBook();
                     break;
                 case 6:
-                    System.out.println("Thank You for using Address Book System.");
+                    System.out.println("Thanks for using Address Book");
                     break;
                 default:
-                    System.out.println("Please Select choice only between 1 to 6");
+                    System.out.println("Please select your choices between only 1 to 6");
                     break;
             }
         }

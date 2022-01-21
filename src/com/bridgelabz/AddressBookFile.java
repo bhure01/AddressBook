@@ -1,21 +1,22 @@
 package com.bridgelabz;
 
+import java.util.Scanner;
+import java.util.Map;
 import java.util.HashMap;
 
-import java.util.Map;
-
-import java.util.Scanner;
 
 public class AddressBookFile {
+
     static Map<String, AddressBook> addressBookMap = new HashMap<>();
 
     static Scanner sc = new Scanner(System.in);
 
+
     public static void addNewAddressBook() {
-        System.out.println("Enter the Address Book Name :");
+        System.out.println("Enter the Name of Address Book:");
         String addressbookName = sc.next();
-        if(checkAddressBook(addressbookName)) {
-            System.out.println("Entered AddressBook is Already Available");
+        if(addressBookMap.containsKey(addressbookName)) {
+            System.out.println("Entered AddressBook is already available in the system");
         } else {
             AddressBook addressBook = new AddressBook();
             addressBookMap.put(addressbookName,addressBook);
@@ -28,51 +29,38 @@ public class AddressBookFile {
         }
     }
 
-    public static boolean checkAddressBook(String addressbookName) {
-        for(String key: addressBookMap.keySet()){
-            if(addressbookName.equalsIgnoreCase(key)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static void selectAddressBook() {
         displayAddressBooks();
-        System.out.println("Enter the Address Book Name :");
+        System.out.println("Enter the name of AddressBook:");
         String addressbookName = sc.next();
-        if(checkAddressBook(addressbookName)) {
+        if(addressBookMap.containsKey(addressbookName)) {
             addressBookMap.get(addressbookName).contactOptions(addressBookMap.get(addressbookName));
         } else {
-            System.out.println("Entered Address Book Name is Invalid");
+            System.out.println("Entered AddressBook name is not available");
         }
     }
 
     public static void editAddressBook() {
         displayAddressBooks();
-        System.out.println("Enter the Address Book Name :");
+        System.out.println("Enter the name of AddressBook :");
         String addressbookName = sc.next();
-        if(checkAddressBook(addressbookName)) {
-//            System.out.println("Enter the New Name for Addressbook :");
-//            String newName = sc.next();
-//            addressBookMap.;
+        if(addressBookMap.containsKey(addressbookName)) {
         } else {
-            System.out.println("Entered Address Book Name is Invalid");
+            System.out.println("Entered AddressBook name is not available");
         }
     }
 
     public static void deleteAddressBook() {
         displayAddressBooks();
-        System.out.println("Enter the Address Book Name :");
+        System.out.println("Enter the AddressBook Name :");
         String addressbookName = sc.next();
-        if(checkAddressBook(addressbookName)) {
+        if(addressBookMap.containsKey(addressbookName)) {
             addressBookMap.remove(addressbookName);
-            System.out.println("Address Book is Deleted");
+            System.out.println("AddressBook is deleted");
         } else {
-            System.out.println("Entered Address Book Name is Invalid");
+            System.out.println("Entered AddressBook name is not available");
         }
     }
-
     public static final int userInput() {
         return sc.nextInt();
     }
